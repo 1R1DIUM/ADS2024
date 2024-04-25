@@ -1,6 +1,4 @@
-
 import pickle
-from bitarray import bitarray
 import math
 
 
@@ -19,38 +17,6 @@ class IMAGE_METHODS:
         for char in in_str:
             decoded_bin_lst.append(ord(char))
         return decoded_bin_lst
-
-
-
-
-
-def float_to_binary(num):
-    # Check if the float is negative
-    if num < 0:
-        sign = '-'
-        num = abs(num)
-    else:
-        sign = ''
-    # Split the float into integer and fractional parts
-    integer_part = int(num)
-    fractional_part = num - integer_part
-    # Convert the integer part to binary
-    binary_integer = bin(integer_part)[2:]
-    # Convert the fractional part to binary
-    binary_fractional = ''
-    while fractional_part > 0:
-        # Multiply the fractional part by 2 and check if it's greater than 1
-        fractional_part *= 2
-        if fractional_part >= 1:
-            binary_fractional += '1'
-            fractional_part -= 1
-        else:
-            binary_fractional += '0'
-    # Combine the binary integer and fractional parts
-    binary = binary_integer + '.' + binary_fractional
-    # Add the sign to the binary representation
-    binary = sign + binary
-    return binary
 
 def getSorted_alph_freq(in_str :str):
         afList = []
@@ -73,7 +39,6 @@ def encode(in_str) ->bytearray:
         #!total cumulitive frequency
     for i in range(len(alph_freq_lst)):
         cum_sum+=alph_freq_lst[i][1]
-        #intervals.append(cum_sum)
         alphabet_list.append(alph_freq_lst[i][0])
         TOTAL_CUM += alph_freq_lst[i][1]
         cum_list.append(cum_sum)
@@ -81,12 +46,9 @@ def encode(in_str) ->bytearray:
     alph_indexes = [i for i in range(len(alph_freq_lst))]
     alphabet_dict = dict(zip(alphabet_list,alph_indexes))
 
-    max_len = math.log2(TOTAL_CUM)
-    if max_len.is_integer():
-        max_len+=1
-    bitlen = math.ceil(max_len)
-    max_len= 2**bitlen
 
+    bitlen = 2+ math.ceil(math.log2(TOTAL_CUM))
+    max_len = 2**bitlen
 
 
     left = 0
@@ -194,12 +156,8 @@ def decode(bytes, alph_freq_lst : list,len_str:int) -> str:
     alph_indexes = [i for i in range(len(alph_freq_lst))]
     alphabet_dict = dict(zip(alphabet_list,alph_indexes))
 
-    max_len = math.log2(TOTAL_CUM)
-    if max_len.is_integer():
-        max_len+=1
-    bitlen = math.ceil(max_len)
-    max_len= 2**bitlen
-
+    bitlen = 2+ math.ceil(math.log2(TOTAL_CUM))
+    max_len = 2**bitlen
 
     alh_reverse_dict = { value : key for key,value in alphabet_dict.items()}
     left = 0
@@ -232,8 +190,8 @@ def decode(bytes, alph_freq_lst : list,len_str:int) -> str:
             break
 
 
-        while left >= max_len/2 or right <= max_len/2 or (
-            max_len/4 <= left < max_len/2 < right <= 3*max_len/4):
+        while (left >= max_len/2 or right <= max_len/2 or (
+            max_len/4 <= left < max_len/2 < right <= 3*max_len/4)) and curr_symbol_ind < len(bit_stream_str)-1:
 
             if left >= max_len/2 or right <= max_len/2:
                 left = int(bin(left)[2:].zfill(bitlen)[1:] + '0',2)   #? shift left by 1; LSB = 0
@@ -313,12 +271,12 @@ def decode_file_bin(in_filename_format,out_filename_format):
 
 if __name__ == '__main__':
 
-    code_file = 'wb LZ77.txt'
-    com_file = "wb LZ77AC_com.txt"
-    decom_file = "wb LZ77AC_decom.txt"
+    # code_file = 'enwik7.txt'
+    # com_file = "enwik7AC_com.txt"
+    # decom_file = "enwik7AC_decom.txt"
 
-    encode_file(code_file,com_file)
-    #decode_file(com_file,decom_file)
+    # encode_file(code_file,com_file)
+    # decode_file(com_file,decom_file)
 
 
     # with open(code_file,'r',encoding='utf-8',newline='\x0A') as file1:
@@ -328,20 +286,20 @@ if __name__ == '__main__':
 
     # print(str1==str2)
     
-    # code_file = 'grey.raw'
-    # com_file = "grey_AC_com.txt"
-    # decom_file = "grey_AC_decom.raw"
+    code_file = r'AC\rgb_com.txt'
+    com_file = r"AC\rgb_LZ77_AC_com.txt"
+    decom_file = r"AC\rgb_LZ77_AC_decom.txt"
 
-    # encode_file_bin(code_file,com_file)
-    # decode_file_bin(com_file,decom_file)
+    encode_file_bin(code_file,com_file)
+    decode_file_bin(com_file,decom_file)
 
 
-    # with open(code_file, 'rb') as read_f:
-    #     str1 = read_f.read()
-    # with open(decom_file,'rb') as read2_f:
-    #     str2 = read2_f.read()
+    with open(code_file, 'rb') as read_f:
+        str1 = read_f.read()
+    with open(decom_file,'rb') as read2_f:
+        str2 = read2_f.read()
 
-    # print(str1==str2)
+    print(str1==str2)
     
     
 

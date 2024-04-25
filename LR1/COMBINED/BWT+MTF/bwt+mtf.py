@@ -563,41 +563,41 @@ class BWT_MTF_RLE_AC:
 def main_BWT_MTF_HA():
     
     #*
-    # code_file = r"COMBINED\BWT+MTF\enwik7.txt"
-    # com_file =r"COMBINED\BWT+MTF\outwik7_bmh.txt"
-    # decom_file = r"COMBINED\BWT+MTF\enwik7_bmh_decoded.txt"
-
-
-    # bmh = BWT_MTF_HA()
-    # bmh.encode_file(code_file,com_file,'\x10')
-    # bmh.decode_file(com_file,decom_file)
-
-
-    # with open(code_file,'r',encoding='utf-8',newline='\x0A') as file1:
-    #         str1 = file1.read()
-    # with open(decom_file,'r',encoding='utf-8',newline='\x0A') as file2:
-    #         str2 = file2.read()
-            
-    # print(str1==str2)
-    
-    #*
-    
-    code_file = r"COMBINED\BWT+MTF\grey.raw"
-    com_file =r"COMBINED\BWT+MTF\grey_bmh.txt"
-    decom_file = r"COMBINED\BWT+MTF\grey_bmh_decoded.txt"
+    code_file = r"COMBINED\BWT+MTF\enwik8.txt"
+    com_file =r"COMBINED\BWT+MTF\outwik8_bmh.txt"
+    decom_file = r"COMBINED\BWT+MTF\enwik8_bmh_decoded.txt"
 
 
     bmh = BWT_MTF_HA()
-    bmh.encode_file_bin(code_file,com_file,'ы')
-    bmh.decode_file_bin(com_file,decom_file)
+    bmh.encode_file(code_file,com_file,'\x10')
+    bmh.decode_file(com_file,decom_file)
 
 
-    with open(code_file, 'rb') as read_f:
-        str1 = read_f.read()
-    with open(decom_file,'rb') as read2_f:
-        str2 = read2_f.read()
+    with open(code_file,'r',encoding='utf-8',newline='\x0A') as file1:
+            str1 = file1.read()
+    with open(decom_file,'r',encoding='utf-8',newline='\x0A') as file2:
+            str2 = file2.read()
             
     print(str1==str2)
+    
+    #*
+    
+    # code_file = r"COMBINED\BWT+MTF\grey.raw"
+    # com_file =r"COMBINED\BWT+MTF\grey_bmh.txt"
+    # decom_file = r"COMBINED\BWT+MTF\grey_bmh_decoded.txt"
+
+
+    # bmh = BWT_MTF_HA()
+    # bmh.encode_file_bin(code_file,com_file,'ы')
+    # bmh.decode_file_bin(com_file,decom_file)
+
+
+    # with open(code_file, 'rb') as read_f:
+    #     str1 = read_f.read()
+    # with open(decom_file,'rb') as read2_f:
+    #     str2 = read2_f.read()
+            
+    # print(str1==str2)
 
 
 
@@ -641,41 +641,41 @@ def main_BWT_MTF_RLE_HA():
 def main_BWT_MTF_AC():
     
     #*
-    # code_file = r"COMBINED\BWT+MTF\war_and_peace.ru.txt"
-    # com_file =r"COMBINED\BWT+MTF\war_coded_bmAC.txt"
-    # decom_file = r"COMBINED\BWT+MTF\war_bmAC_decoded.txt"
+    code_file = r"COMBINED\BWT+MTF\enwik8.txt"
+    com_file =r"COMBINED\BWT+MTF\enwik8bmAC.txt"
+    decom_file = r"COMBINED\BWT+MTF\enwik8bmAC_decoded.txt"
 
 
-    # bmh = BWT_MTF_AC()
-    # bmh.encode_file(code_file,com_file,'\x10')
-    # bmh.decode_file(com_file,decom_file)
+    bmh = BWT_MTF_AC()
+    #bmh.encode_file(code_file,com_file,'\x10')
+    bmh.decode_file(com_file,decom_file)
 
 
-    # with open(code_file,'r',encoding='utf-8',newline='\x0A') as file1:
-    #         str1 = file1.read()
-    # with open(decom_file,'r',encoding='utf-8',newline='\x0A') as file2:
-    #         str2 = file2.read()
+    with open(code_file,'r',encoding='utf-8',newline='\x0A') as file1:
+            str1 = file1.read()
+    with open(decom_file,'r',encoding='utf-8',newline='\x0A') as file2:
+            str2 = file2.read()
             
-    # print(str1==str2)
+    print(str1==str2)
     
     #*
     
-    code_file = r"COMBINED\BWT+MTF\grey.raw"
-    com_file =r"COMBINED\BWT+MTF\grey_bmAC.txt"
-    decom_file = r"COMBINED\BWT+MTF\grey_bmAC_decoded.txt"
+    # code_file = r"COMBINED\BWT+MTF\grey.raw"
+    # com_file =r"COMBINED\BWT+MTF\grey_bmAC.txt"
+    # decom_file = r"COMBINED\BWT+MTF\grey_bmAC_decoded.txt"
 
 
-    bmac = BWT_MTF_AC()
-    bmac.encode_file_bin(code_file,com_file,'ы')
-    bmac.decode_file_bin(com_file,decom_file)
+    # bmac = BWT_MTF_AC()
+    # bmac.encode_file_bin(code_file,com_file,'ы')
+    # bmac.decode_file_bin(com_file,decom_file)
 
 
-    with open(code_file, 'rb') as read_f:
-        str1 = read_f.read()
-    with open(decom_file,'rb') as read2_f:
-        str2 = read2_f.read()
+    # with open(code_file, 'rb') as read_f:
+    #     str1 = read_f.read()
+    # with open(decom_file,'rb') as read2_f:
+    #     str2 = read2_f.read()
             
-    print(str1==str2)
+    # print(str1==str2)
 
 
 def main_BWT_MTF_RLE_AC():
@@ -719,4 +719,4 @@ def main_BWT_MTF_RLE_AC():
     
 
 if __name__ == '__main__':
-    main_BWT_MTF_RLE_AC()
+    main_BWT_MTF_HA()

@@ -230,9 +230,9 @@ huffma = Huffman()
 #huffma.encode_file("war_and_peace.ru.txt","outwar.txt")
 #huffma.decode_file("outwar.txt","war_test.txt")
 
-code_file = r"HUFFMAN\wb LZ77.txt"
-com_file = r"HUFFMAN\wb LZ77_com.txt"
-decom_file = r"HUFFMAN\wbLZ77_decom.txt"
+code_file = r"HUFFMAN\PURE_LZ\wb_com.txt"
+com_file = r"HUFFMAN\wb_LZ77_HA_com.txt"
+decom_file = r"HUFFMAN\wb_LZ77_decom.txt"
 
 huffma.encode_file_bin(code_file,com_file)
 huffma.decode_file_bin(com_file,decom_file)
